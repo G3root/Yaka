@@ -43,6 +43,6 @@ temp
 dist
 
 
-.context
+.reference/**
 
 node_modules
