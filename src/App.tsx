@@ -1,11 +1,11 @@
 import { useAtom, useAtomSet } from "@effect/atom-react"
-import { TextAttributes } from "@opentui/core"
 import { useRenderer } from "@opentui/react"
 import { Effect } from "effect"
 import * as Atom from "effect/unstable/reactivity/Atom"
 import { useCallback, useEffect, useRef } from "react"
 import { loadStoredThemeConfig, resolveThemeName, type ThemeConfig } from "./themeStore.ts"
 import { setActiveTheme, setSystemThemeColors, theme } from "./atoms/theme.tsx"
+import { Dashboard } from "./features/dashboard/dashboard.tsx"
 
 interface AppProps {
 	readonly systemThemeGeneration?: number
@@ -74,14 +74,5 @@ export function App({ systemThemeGeneration = 0 }: AppProps) {
 		}
 	}, [applyTheme, renderer.themeMode, themeConfig.mode])
 
-	return (
-		<box alignItems="center" justifyContent="center" flexGrow={1} backgroundColor={theme.background}>
-			<box justifyContent="center" alignItems="flex-end">
-				<ascii-font font="tiny" text="OpenTUI" />
-				<text fg={theme.textMuted} attributes={TextAttributes.DIM}>
-					What will you build?
-				</text>
-			</box>
-		</box>
-	)
+	return <Dashboard />
 }
